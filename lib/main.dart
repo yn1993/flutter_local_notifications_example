@@ -288,12 +288,6 @@ class _HomePageState extends State<HomePage> {
             child: Center(
               child: Column(
                 children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                    child:
-                        Text('Tap on a notification when it appears to trigger'
-                            ' navigation'),
-                  ),
                   PaddedElevatedButton(
                     buttonText: 'Show plain notification with payload',
                     onPressed: () async {
@@ -321,7 +315,6 @@ class _HomePageState extends State<HomePage> {
                       await _showNotificationCustomSound();
                     },
                   ),
-                  const Divider(),
                 ],
               ),
             ),
