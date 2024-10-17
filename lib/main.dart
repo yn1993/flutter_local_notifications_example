@@ -64,11 +64,6 @@ void notificationTapBackground(NotificationResponse notificationResponse) {
   }
 }
 
-/// IMPORTANT: running the following code on its own won't work as there is
-/// setup required for each platform head project.
-///
-/// Please download the complete example app from the GitHub repository where
-/// all the setup has been done
 Future<void> main() async {
   // needed if you intend to initialize in the `main` function
   WidgetsFlutterBinding.ensureInitialized();
@@ -151,16 +146,10 @@ Future<void> main() async {
     },
     notificationCategories: darwinNotificationCategories,
   );
-  final LinuxInitializationSettings initializationSettingsLinux =
-      LinuxInitializationSettings(
-    defaultActionName: 'Open notification',
-    defaultIcon: AssetsLinuxIcon('icons/app_icon.png'),
-  );
   final InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
     iOS: initializationSettingsDarwin,
     macOS: initializationSettingsDarwin,
-    linux: initializationSettingsLinux,
   );
   await flutterLocalNotificationsPlugin.initialize(
     initializationSettings,
