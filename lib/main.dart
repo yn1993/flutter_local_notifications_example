@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter/services.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -71,7 +72,10 @@ class HomePage extends StatelessWidget {
                     child: const Text('Show Notification with Custom Sound_2')),
                 ElevatedButton(
                     onPressed: _showNotificationCustomSound_3,
-                    child: const Text('Show Notification with Custom Sound_3'))
+                    child: const Text('Show Notification with Custom Sound_3')),
+                ElevatedButton(
+                    onPressed: _triggerVibration,
+                    child: const Text('Trigger Vibration'))
               ],
             ),
           ),
@@ -186,5 +190,9 @@ class HomePage extends StatelessWidget {
       body,
       notificationDetails,
     );
+  }
+
+  void _triggerVibration() {
+    HapticFeedback.vibrate(); // 振動を発生させる
   }
 }
