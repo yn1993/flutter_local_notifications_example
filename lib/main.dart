@@ -69,6 +69,9 @@ class HomePage extends StatelessWidget {
                 ElevatedButton(
                     onPressed: _showNotificationCustomSound_2,
                     child: const Text('Show Notification with Custom Sound_2')),
+                ElevatedButton(
+                    onPressed: _showNotificationCustomSound_3,
+                    child: const Text('Show Notification with Custom Sound_3'))
               ],
             ),
           ),
@@ -143,6 +146,34 @@ class HomePage extends StatelessWidget {
     const DarwinNotificationDetails darwinNotificationDetails =
         DarwinNotificationDetails(
       sound: 'Telephone-Ringtone02-1.aiff',
+    );
+    const NotificationDetails notificationDetails = NotificationDetails(
+      android: androidNotificationDetails,
+      iOS: darwinNotificationDetails,
+      macOS: darwinNotificationDetails,
+    );
+    await flutterLocalNotificationsPlugin.show(
+      _generateRandomId(),
+      title,
+      body,
+      notificationDetails,
+    );
+  }
+
+  Future<void> _showNotificationCustomSound_3({
+    String title = 'custom sound notification title',
+    String body = 'custom sound notification body',
+  }) async {
+    const AndroidNotificationDetails androidNotificationDetails =
+        AndroidNotificationDetails(
+      'your other channel id',
+      'your other channel name',
+      channelDescription: 'your other channel description',
+      sound: RawResourceAndroidNotificationSound('Telephone-Ringtone02-1-big'),
+    );
+    const DarwinNotificationDetails darwinNotificationDetails =
+        DarwinNotificationDetails(
+      sound: 'Telephone-Ringtone02-1-big.aiff',
     );
     const NotificationDetails notificationDetails = NotificationDetails(
       android: androidNotificationDetails,
